@@ -1,4 +1,0 @@
-interface:
-  display_name: "Verve English Coach"
-  short_description: "Sound fluent, precise, witty, and compelling"
-  default_prompt: "Use $verve-english-coach to help me express this naturally and charismatically."
