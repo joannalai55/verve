@@ -1,0 +1,25 @@
+{
+  "name": "verve",
+  "version": "0.1.0",
+  "description": "A personal English charisma coach for fluent, precise, witty communication.",
+  "author": {
+    "name": "Personal"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Verve",
+    "shortDescription": "Build effortless, charismatic English.",
+    "longDescription": "Polish real messages, decode humor and subtext, practise speaking, and turn encountered language into an active personal vocabulary.",
+    "developerName": "Personal",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Make this sound natural, precise, and charismatic.",
+      "Explain the meaning, subtext, and humor in this line.",
+      "Start a five-minute Verve practice session."
+    ]
+  }
+}

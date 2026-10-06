@@ -40,6 +40,41 @@ For example, a rewrite can become a useful speaking chunk; that chunk can later 
 
 ## Current status
 
-The current version is a coaching plugin with local learning tools. It is not yet a standalone web app and does not fine-tune model weights. Personalization comes from coaching instructions and stored context.
+The current version is a coaching plugin with local learning tools. The code in this repository does not include a standalone web app or fine-tune model weights. Personalization comes from coaching instructions and stored context.
 
-This public showcase excludes personal profiles, learning records, and conversations. The long-term goal is better independent expression—not just better AI rewrites.
+This repository excludes personal profiles, learning records, and conversations. The long-term goal is better independent expression—not just better AI rewrites.
+
+## Try the learning library
+
+Requires Python 3.10 or newer. No third-party Python packages or API key are needed for the library commands.
+
+```sh
+git clone https://github.com/joannalai55/verve.git
+cd verve
+python3 skills/verve-english-coach/scripts/verve_library.py init
+python3 skills/verve-english-coach/scripts/verve_library.py add --kind phrase --text "get to the heart of it" --meaning "identify the central issue" --tags work,clarity
+python3 skills/verve-english-coach/scripts/verve_library.py due --limit 5
+python3 skills/verve-english-coach/scripts/verve_library.py stats
+```
+
+The `add` command returns an item ID. Record a practice result with:
+
+```sh
+python3 skills/verve-english-coach/scripts/verve_library.py review --id YOUR_ITEM_ID --score 3
+```
+
+Scores: **0** forgot; **1** recognized but could not produce; **2** produced with friction; **3** produced naturally. The command records progress and schedules the next review.
+
+Data stays in `~/.verve/library.json`. To use a separate library, put `--data-dir /path/to/library` before the command, or set `VERVE_DATA_DIR`. The CLI stores and schedules learning material; coaching itself is provided by an AI host using the included skill instructions.
+
+## Coaching files
+
+Start with [the coaching skill](skills/verve-english-coach/SKILL.md). The `.codex-plugin/plugin.json` manifest packages it as a plugin, and the `references/` directory contains the coaching methods. An AI host is required to interpret these instructions; running the Python script alone does not start an AI tutor.
+
+## Verify locally
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+Tests use temporary libraries and do not read or modify your personal learning records.
